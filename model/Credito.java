@@ -52,17 +52,20 @@ public class Credito {
     this.receber = receber;
     this.valorReceber = receber.getValor();
     teclado.nextLine();
-    System.out.println("Informe o ID do valor à creditar: ");
+    System.out.println("Informe o ID do Recebimento: ");
     id = teclado.nextInt();
     teclado.nextLine();
-    System.out.println("Informe a data do crédito: ");
+    System.out.println("Informe a data do Recebimento: ");
     dtPag = java.sql.Date.valueOf(teclado.nextLine());
-    System.out.println("Informe o Valor à creditar: ");
+    System.out.println("Informe o Valor Recebido: ");
     valor = teclado.nextDouble();
     teclado.nextLine();
 
     contaMovimento.adicionarCredito(valor);
 
+  }
+  public String toString(){
+    return "Título relacionado: " + receber + "\n Valor Recebido: R$" + valor + "\n Data do Recebimento: " + dtPag;
   }
 
   public static ContaMovimento getContaMovimento() {

@@ -102,12 +102,8 @@ public class Pagar extends TipoDePagamento {
   }
 
 
-  public String toString()
-  {
-    return  "Nome do Fornecedor: " + fornecedor.getNome() + " Telefone do Fornecedor: "
-            + fornecedor.getTelefone() + " Tipo de Despesa: "
-            + tipoDePagamento.getNome() +  "Valor do título à PAGAR: " + getValor()
-            + "Data de vencimento: " + getDtVenc() + "Situação: " + getSituacao();
+  public String toString(){
+    return "Fornecedor: " + fornecedor.getNome() + "\n Valor do Título: R$" + valor + "\n Data de vencimento: " + dtVenc;
   }
 
 

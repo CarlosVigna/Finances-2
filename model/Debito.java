@@ -62,6 +62,10 @@ public class Debito {
 
     }
 
+  public String toString(){
+    return "Título relacionado: " + pagar + "\n Valor Pago: R$" + valor + "\n Data do Pag: " + dtPag;
+  }
+
   public static ContaMovimento getContaMovimento() {
     return contaMovimento;
   }

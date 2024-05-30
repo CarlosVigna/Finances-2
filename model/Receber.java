@@ -97,6 +97,10 @@ import java.util.Scanner;
 
         }
 
+        public String toString(){
+            return "Credor: " + credor.getNome() + "\n Valor do Título: R$" + valor + "\n Data de vencimento: " + dtVenc;
+        }
+
         public static ContaMovimento getContaMovimento() {
 
             return contaMovimento;
