@@ -42,9 +42,9 @@ public class TipoDeRecebimento {
 
   public void cadastrar()
   {
-    System.out.println("Informe o ID do tipo de Receita: ");
+    System.out.println("Informe o ID do tipo de Recebimento: ");
     id = teclado.nextInt();
-    System.out.println("Qual é o tipo de Receita: ");
+    System.out.println("Informe o  o tipo de Recebimento: ");
     nome = teclado.nextLine();
     teclado.nextLine();
      }

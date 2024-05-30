@@ -2,17 +2,17 @@ package view;
 
 import java.util.Scanner;
 
-public class TipoDeDespesa {
+public class TipoDePagamento {
 
   private int id;
   private String nome;
 
   Scanner teclado = new Scanner(System.in);
 
-  public TipoDeDespesa() {
+  public TipoDePagamento() {
   }
 
-  public TipoDeDespesa(int id, String nome) {
+  public TipoDePagamento(int id, String nome) {
     this.id = id;
     this.nome = nome;
 
@@ -36,16 +36,16 @@ public class TipoDeDespesa {
 
   public void cadastrar()
   {
-    System.out.println("Informe o ID do tipo de Despesa: ");
+    System.out.println("Informe o ID do tipo de Pagamento: ");
     id = teclado.nextInt();
-    System.out.println("Nome do tipo de Despesa: ");
+    System.out.println("Nome do tipo de Pagamento: ");
     nome = teclado.nextLine();
     teclado.nextLine();
   }
 
   @Override
   public String toString() {
-    return "Tipo de Despesa: " + getNome();
+    return "Tipo de Pagamento: " + getNome();
   }
 
 }

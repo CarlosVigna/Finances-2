@@ -13,6 +13,7 @@ import java.util.Scanner;
         private static double totalAReceber;
         Credor credor;
         TipoDeRecebimento tipoDeRecebimento;
+
         Scanner teclado = new Scanner(System.in);
 
         private static ContaMovimento contaMovimento = new ContaMovimento();
@@ -77,26 +78,11 @@ import java.util.Scanner;
             this.tipoDeRecebimento = tipoDeRecebimento;
         }
 
-        public void cadastrar()
-        {
-
-            teclado.nextLine();
-            System.out.println("Informe o ID do título a Receber: ");
-            id = teclado.nextInt();
-            teclado.nextLine();
-            System.out.println("Informe o Histórico : ");
-            historico = teclado.nextLine();
-
-        }
-
         public void cadastrar(Credor credor, TipoDeRecebimento tipoDeRecebimento) {
             this.credor = credor;
             this.tipoDeRecebimento = tipoDeRecebimento;
-
-            teclado.nextLine();
             System.out.println("Informe o ID do título a Receber: ");
             id = teclado.nextInt();
-            teclado.nextLine();
             System.out.println("Informe o Histórico: ");
             historico = teclado.nextLine();
             System.out.println("Informe o Valor: ");
@@ -112,6 +98,7 @@ import java.util.Scanner;
         }
 
         public static ContaMovimento getContaMovimento() {
+
             return contaMovimento;
         }
 

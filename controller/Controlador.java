@@ -20,11 +20,11 @@ public class Controlador {
     ArrayList<Receber> listaDeTitulosReceber = new ArrayList<>();
     //Listagem de contas À PAGAR
     ArrayList<Fornecedor> ListaDeFornecedores = new ArrayList<>();
-    ArrayList<TipoDeDespesa> ListaDeTipoDeDespesas = new ArrayList<>();
+    ArrayList<TipoDePagamento> listaDeTipoDePagamento = new ArrayList<>();
     ArrayList<Pagar> LisaDeTitulosPagar = new ArrayList<>();
     //lISTAGEM DE LANÇAMENTOS
     ArrayList<Credito>ListaDeLancamentosCreditos = new ArrayList<>();
-
+    ArrayList<Debito>ListaDeLancamentosDebitos = new ArrayList<>();
     //Instanciação dos objetos de classes (CONTAS À RECEBER)
     Credor credor = new Credor(0, null, null);
     TipoDeRecebimento tipoRecebimento = new TipoDeRecebimento(0,null);
@@ -36,11 +36,12 @@ public class Controlador {
 
     //Instanciação dos objetos de classes (CONTAS À PAGAR)
     Fornecedor fornecedor = new Fornecedor();
-    TipoDeDespesa tipoDeDespesa = new TipoDeDespesa();
+    TipoDePagamento tipoDePagamento = new TipoDePagamento();
 
     //Objetos criados para armazenar as informações que vão para o título à Pagar que está sendo criado no momento
     Fornecedor ultimoFornecedor = new Fornecedor();
-    TipoDeDespesa ultimoTipoDeDespesa = new TipoDeDespesa();
+    TipoDePagamento ultimoTipoDePagamento = new TipoDePagamento();
+    Pagar ultimoPagamento = new Pagar();
 
     public void cadastrarCredor() {
 
@@ -49,8 +50,9 @@ public class Controlador {
         credor.cadastrar();
         ListaDeCredores.add(credor);
 
-
+        System.out.println("*----------------------------*");
         System.out.println("Credor Cadastrado com sucesso! ");
+        System.out.println("*----------------------------*");
     }
 
     public void cadastrarTipoDeRecebimento() {
@@ -60,7 +62,9 @@ public class Controlador {
         tipoRecebimento.cadastrar();
         ListaDeTipoDeRecebimento.add(tipoRecebimento);
 
+        System.out.println("*-----------------------------------------*");
         System.out.println("Tipo de Recebimento Cadastrado com sucesso! ");
+        System.out.println("*-----------------------------------------*");
     }
 
     public void cadastrarTituloReceber() {
@@ -68,11 +72,12 @@ public class Controlador {
 
         Receber tituloReceber = new Receber();
 
-        System.out.println("Vamos Cadastrar um título a Receber!");
-        System.out.println("");
+        System.out.println("Vamos Cadastrar um título à Receber!");
+        System.out.println("*------------------------------------*");
         System.out.println("1 - Informar um Credor já cadastrado.");
         System.out.println("2 - Cadastrar um novo Credor.");
-        System.out.print("Digite aqui a sua opção: ");
+        System.out.println("Digite aqui a sua opção: ");
+        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 
         escolhaReceber = teclado.nextInt();
         teclado.nextLine();
@@ -82,8 +87,8 @@ public class Controlador {
         if (escolhaReceber == 1) {
 
             if (ListaDeCredores.isEmpty()) {
-                System.out.println("Nenhum credor cadastrado.");
-                System.out.println("Deseja cadastrar um novo Credor? 1-Sim, 2-Não");
+                System.out.println("Não há credores cadastrados!! ;(");
+                System.out.println("Deseja cadastrar um novo Credor? \n1-Sim, 2-Não");
                 System.out.println("");
                 escolhaCadastrarCredor = teclado.nextInt();
 
@@ -94,15 +99,14 @@ public class Controlador {
                     ultimoCredor = ListaDeCredores.getLast();
 
                 } else {
-                    //continue volta ao menu principal
-                    if (escolhaCadastrarCredor == 2) {
-                        credor.cadastrar();
+                        if (escolhaCadastrarCredor == 2) {
+                        return;
                     }
                 }
 
             } else {
                 Collections.sort(ListaDeCredores, comparing(Credor::getNome));
-                System.out.println("Escolha o CREDOR:");
+                System.out.println("Escolha um CREDOR da lista:");
                 int i = 1;
                 for (Credor x : ListaDeCredores) {
                     System.out.println(i + " - " + x);
@@ -140,19 +144,22 @@ public class Controlador {
             credor = new Credor();
             credor.cadastrar();
             ListaDeCredores.add(credor);
-            System.out.println("Novo credor cadastrado com sucesso!");
+            System.out.println("*---------------------------------*");
+            System.out.println("Novo CREDOR cadastrado com sucesso!");
+            System.out.println("*---------------------------------*");
             ultimoCredor = ListaDeCredores.getLast();
 
         } else {
             System.out.println("Opção inválida.");
-
         }
 
         int escolhaTipoTituloReceber; // variável pra essa situação de escolher um tipo ja cadastrado ou cadastrar um novo.
 
-        System.out.println("1 - Informar um Tipo de Recebimento já cadastrado.");
+        System.out.println("Próximo passo: ");
+        System.out.println("1 - Adicionar um Tipo de Recebimento já cadastrado.");
         System.out.println("2 - Cadastrar um novo Tipo de Recebimento.");
-        System.out.print("Digite aqui a sua opção: ");
+        System.out.println("Digite aqui a sua opção: ");
+        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 
         escolhaTipoTituloReceber = teclado.nextInt();
         teclado.nextLine();
@@ -163,15 +170,22 @@ public class Controlador {
         if (escolhaReceber == 1) {
 
             if (ListaDeTipoDeRecebimento.isEmpty()) {
-                System.out.println("Nenhum Tipo de Recebimento cadastrado.");
-                System.out.println("Deseja cadastrar um novo Tipo de Recebimento? 1-Sim, 2-Não");
+                System.out.println("Não há Tipo de Recebimento cadastrado!!.");
+                System.out.println("Deseja cadastrar um novo Tipo de Recebimento? \n1-Sim, 2-Não");
+                System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+
                 escolhaCadastrarTipoRecebimento = teclado.nextInt();
 
                 if (escolhaCadastrarTipoRecebimento == 1) {
+
                     tipoRecebimento = new TipoDeRecebimento();
                     tipoRecebimento.cadastrar();
                     ListaDeTipoDeRecebimento.add(tipoRecebimento);
                     ultimoTipoDeRecebimento = ListaDeTipoDeRecebimento.getLast();
+
+                    System.out.println("*-----------------------------------------*");
+                    System.out.println("Tipo de Recebimento Cadastrado com sucesso! ");
+                    System.out.println("*-----------------------------------------*");
 
                 } else {
                     if (escolhaCadastrarTipoRecebimento == 2) {
@@ -183,17 +197,18 @@ public class Controlador {
 
                 boolean escolhaValida = false;
                 do {
-                    //Verificar como podemos ordenar essa lista
 
-                    //Collections.sort(ListaDeCredores, comparing(Credor::getNome));
-                    System.out.println("Escolha o Tipo Recebimento:");
+
+                    Collections.sort(ListaDeCredores, comparing(Credor::getId));
+                    System.out.println("Escolha o Tipo Recebimento da lista abaixo:");
+                    System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
                     int i = 1;
                     for (TipoDeRecebimento y : ListaDeTipoDeRecebimento) {
                         System.out.println(i + " - " + y);
                         i++;
                     }
 
-                    System.out.print("Digite o número do Tipo de recebimento: ");
+                    System.out.print("Digite o número do Tipo de Recebimento: ");
                     int tipoRecebimentoEscolhido = teclado.nextInt();
                     teclado.nextLine();
                     //Verificar se o ID selecionado está entre o zero e o maior da listagem
@@ -202,7 +217,6 @@ public class Controlador {
                         System.out.println("Tipo de Recebimento selecionado: " + tipoRecebimentoSelecionado);
                         ultimoTipoDeRecebimento = ListaDeTipoDeRecebimento.get(tipoRecebimentoEscolhido - 1);
                         escolhaValida = true;
-
 
                     } else {
                         System.out.println("Opção inválida.");
@@ -216,7 +230,10 @@ public class Controlador {
             tipoRecebimento.cadastrar();
             ListaDeTipoDeRecebimento.add(tipoRecebimento);
             ultimoTipoDeRecebimento = ListaDeTipoDeRecebimento.getLast();
-            System.out.println("Novo tipo de Recebimento cadastrado com sucesso!");
+
+            System.out.println("*-----------------------------------------*");
+            System.out.println("Tipo de Recebimento Cadastrado com sucesso! ");
+            System.out.println("*-----------------------------------------*");
 
         } else {
             System.out.println("Opção inválida.");
@@ -224,7 +241,11 @@ public class Controlador {
 
         tituloReceber.cadastrar(ultimoCredor, ultimoTipoDeRecebimento);
         listaDeTitulosReceber.add(tituloReceber);
-        System.out.println("Título à Receber cadastrado com sucesso!");
+
+        System.out.println("*--------------------------------------*");
+        System.out.println("Título Á RECEBER Cadastrado com sucesso!");
+        System.out.println("*--------------------------------------*");
+
         System.out.println(tituloReceber);
     }
 
@@ -233,15 +254,19 @@ public class Controlador {
         fornecedor.cadastrar();
         ListaDeFornecedores.add(fornecedor);
 
-        System.out.println("Credor Cadastrado com sucesso! ");
+        System.out.println("*-------------------------------------*");
+        System.out.println("Novo Fornecedor Cadastrado com sucesso! ");
+        System.out.println("*-------------------------------------*");
     }
 
     public void cadastrarTipoDeDespesa() {
-        tipoDeDespesa = new TipoDeDespesa();
-        tipoDeDespesa.cadastrar();
-        ListaDeTipoDeDespesas.add(tipoDeDespesa);
+        tipoDePagamento = new TipoDePagamento();
+        tipoDePagamento.cadastrar();
+        listaDeTipoDePagamento.add(tipoDePagamento);
 
-        System.out.println("Tipo de Recebimento Cadastrado com sucesso! ");
+        System.out.println("*------------------------------------------*");
+        System.out.println("Novo Tipo de Despesa cadastrado com sucesso! ");
+        System.out.println("*------------------------------------------*");
     }
 
     public void cadastrarTituloPagar() {
@@ -249,11 +274,12 @@ public class Controlador {
 
         Pagar tituloPagar = new Pagar();
 
-        System.out.println("Vamos Cadastrar um novo título à Pagar!");
-        System.out.println("");
+        System.out.println("Vamos Cadastrar um título à Pagar!");
+        System.out.println("*------------------------------------*");
         System.out.println("1 - Informar um Fornecedor já cadastrado.");
         System.out.println("2 - Cadastrar um novo Fornecedor.");
-        System.out.print("Digite aqui a sua opção: ");
+        System.out.println("Digite aqui a sua opção: ");
+        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 
         escolhaPagar = teclado.nextInt();
         teclado.nextLine();
@@ -263,27 +289,34 @@ public class Controlador {
         if (escolhaPagar == 1) {
 
             if (ListaDeCredores.isEmpty()) {
-                System.out.println("Nenhum credor cadastrado.");
-                System.out.println("Deseja cadastrar um novo Fornecedor? 1-Sim, 2-Não");
+                System.out.println("Não há Fornecedores cadastrados!! ;( ");
+                System.out.println("Deseja cadastrar um novo Fornecedor? \n1-Sim, 2-Não");
                 System.out.println("");
                 escolhaCadastrarFornecedor = teclado.nextInt();
 
                 if (escolhaCadastrarFornecedor == 1) {
+
                     fornecedor = new Fornecedor();
                     fornecedor.cadastrar();
                     ListaDeFornecedores.add(fornecedor);
                     ultimoFornecedor = ListaDeFornecedores.getLast();
 
+                    System.out.println("*-------------------------------------*");
+                    System.out.println("Novo Fornecedor Cadastrado com sucesso! ");
+                    System.out.println("*-------------------------------------*");
+
                 } else {
                     //continue volta ao menu principal
                     if (escolhaCadastrarFornecedor == 2) {
-                        fornecedor.cadastrar();
+                        return;
                     }
                 }
 
             } else {
                 Collections.sort(ListaDeCredores, comparing(Credor::getNome));
-                System.out.println("Escolha o FORNECEDOR:");
+                System.out.println("Escolha um Fornecedor da lista abaixo:");
+                System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+
                 int i = 1;
                 for (Fornecedor x : ListaDeFornecedores) {
                     System.out.println(i + " - " + x);
@@ -295,12 +328,12 @@ public class Controlador {
                 //Do valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
                 do {
                     int fornecedorEscolhido = 0;
-                    System.out.print("Digite o número do credor: ");
+                    System.out.print("Digite o número do Fornecedor: ");
                     fornecedorEscolhido = teclado.nextInt();
                     teclado.nextLine();
 
                     //Aqui ele verifica se o número informado é maior que zero e menor que o último da lista
-                    if (fornecedorEscolhido > 0 && fornecedorEscolhido <= ListaDeCredores.size()) {
+                    if (fornecedorEscolhido > 0 && fornecedorEscolhido <= ListaDeFornecedores.size()) {
                         Fornecedor fornecedorSelecionado = ListaDeFornecedores.get(fornecedorEscolhido - 1);
                         System.out.println("Fornecedor selecionado: " + fornecedorSelecionado);
                         //Armazeno o fornecedor selecionado em uma variável que será vinculada ao título à pagar
@@ -321,42 +354,50 @@ public class Controlador {
             fornecedor = new Fornecedor();
             fornecedor.cadastrar();
             ListaDeFornecedores.add(fornecedor);
-            System.out.println("Novo Fornecedor cadastrado com sucesso!");
             ultimoFornecedor = ListaDeFornecedores.getLast();
 
+            System.out.println("*-------------------------------------*");
+            System.out.println("Novo Fornecedor Cadastrado com sucesso! ");
+            System.out.println("*-------------------------------------*");
+
         } else {
-            System.out.println("Opção inválida.");
+            System.out.println("Opção inválida. ☹\uFE0F ");
 
         }
 
         int escolhaTipoTituloPagar; // variável pra essa situação de escolher um tipo ja cadastrado ou cadastrar um novo.
-
-        System.out.println("1 - Informar um Tipo de Recebimento já cadastrado.");
-        System.out.println("2 - Cadastrar um novo Tipo de Recebimento.");
-        System.out.print("Digite aqui a sua opção: ");
+        System.out.println("Próximo passo: ");
+        System.out.println("1 - Informar um Tipo de Pagamento já cadastrado.");
+        System.out.println("2 - Cadastrar um novo Tipo de Pagamento.");
+        System.out.println("Digite aqui a sua opção: ");
+        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 
         escolhaTipoTituloPagar = teclado.nextInt();
         teclado.nextLine();
 
-        int escolhaCadastrarTipoDespesa = 0;
+        int escolhaCadastrarTipoPagamento = 0;
 
-        // isEmpty é pra ver se tá vazio viu
+        // isEmpty é pra ver se tá vazio
         if (escolhaTipoTituloPagar == 1) {
 
-            if (ListaDeTipoDeRecebimento.isEmpty()) {
-                System.out.println("Nenhum Tipo de Pagamento cadastrado.");
-                System.out.println("Deseja cadastrar um novo Tipo de Pagamento? 1-Sim, 2-Não");
-                escolhaCadastrarTipoDespesa = teclado.nextInt();
+            if (listaDeTipoDePagamento.isEmpty()) {
+                System.out.println("Não enhum Tipo de Pagamento cadastrado.");
+                System.out.println("Deseja cadastrar um novo Tipo de Pagamento? \n1-Sim, 2-Não");
+                escolhaCadastrarTipoPagamento = teclado.nextInt();
 
-                if (escolhaCadastrarTipoDespesa == 1) {
-                    tipoDeDespesa = new TipoDeDespesa();
-                    tipoDeDespesa.cadastrar();
-                    ListaDeTipoDeDespesas.add(tipoDeDespesa);
-                    ultimoTipoDeDespesa = ListaDeTipoDeDespesas.getLast();
+                if (escolhaCadastrarTipoPagamento == 1) {
+                    tipoDePagamento = new TipoDePagamento();
+                    tipoDePagamento.cadastrar();
+                    listaDeTipoDePagamento.add(tipoDePagamento);
+                    ultimoTipoDePagamento = listaDeTipoDePagamento.getLast();
+
+                    System.out.println("*--------------------------------------------*");
+                    System.out.println("Novo Tipo de Pagamento cadastrado com sucesso! ");
+                    System.out.println("*--------------------------------------------*");
 
                 } else {
-                    if (escolhaCadastrarTipoDespesa == 2) {
-                        tipoDeDespesa.cadastrar();
+                    if (escolhaCadastrarTipoPagamento == 2) {
+                        tipoDePagamento.cadastrar();
                     }
                 }
 
@@ -364,24 +405,25 @@ public class Controlador {
 
                 boolean escolhaValida = false;
                 do {
-                    //Verificar como podemos ordenar essa lista
 
-                    //Collections.sort(ListaDeCredores, comparing(Credor::getNome));
-                    System.out.println("Escolha o Tipo de Despesa:");
+                    Collections.sort(listaDeTipoDePagamento, comparing(TipoDePagamento::getId));
+                    System.out.println("Escolha um Tipo de Pagamento da lista:");
                     int i = 1;
-                    for (TipoDeDespesa y : ListaDeTipoDeDespesas) {
+                    for (TipoDePagamento y : listaDeTipoDePagamento) {
                         System.out.println(i + " - " + y);
                         i++;
                     }
 
-                    System.out.print("Digite o número do Tipo de despesa: ");
-                    int tipoDespesaEscolhida = teclado.nextInt();
+                    System.out.print("Digite o número do Tipo de Pagamento escolhido: ");
+
+                    int tipoPagamentoEscolhido = teclado.nextInt();
                     teclado.nextLine();
+
                     //Verificar se o ID selecionado está entre o zero e o maior da listagem
-                    if (tipoDespesaEscolhida > 0 && tipoDespesaEscolhida <= ListaDeTipoDeDespesas.size()) {
-                        TipoDeDespesa tipoDespesaSelecionado = ListaDeTipoDeDespesas.get(tipoDespesaEscolhida - 1);
-                        System.out.println("Tipo de Despesa selecionado: " + tipoDespesaSelecionado);
-                        ultimoTipoDeDespesa = tipoDespesaSelecionado;
+                    if (tipoPagamentoEscolhido > 0 && tipoPagamentoEscolhido <= listaDeTipoDePagamento.size()) {
+                        TipoDePagamento tipoPagamentoSelecionado = listaDeTipoDePagamento.get(tipoPagamentoEscolhido - 1);
+                        System.out.println("Tipo de Pagamento selecionado: " + tipoPagamentoSelecionado);
+                        ultimoTipoDePagamento = tipoPagamentoSelecionado;
                         escolhaValida = true;
 
 
@@ -393,27 +435,37 @@ public class Controlador {
             }
         } else if (escolhaPagar == 2) {
 
-            tipoDeDespesa = new TipoDeDespesa();
-            tipoDeDespesa.cadastrar();
-            ListaDeTipoDeDespesas.add(tipoDeDespesa);
-            ultimoTipoDeDespesa = ListaDeTipoDeDespesas.getLast();
-            System.out.println("Novo tipo de Despesa cadastrado com sucesso!");
+            tipoDePagamento = new TipoDePagamento();
+            tipoDePagamento.cadastrar();
+            listaDeTipoDePagamento.add(tipoDePagamento);
+            ultimoTipoDePagamento = listaDeTipoDePagamento.getLast();
+
+            System.out.println("*-------------------------------------*");
+            System.out.println("Novo Tipo de Pagamento cadastrado com sucesso! ");
+            System.out.println("*-------------------------------------*");
 
         } else {
-            System.out.println("Opção inválida.");
+            System.out.println("Opção inválida. ☹\uFE0F");
         }
 
-        tituloPagar.cadastrar(ultimoFornecedor, ultimoTipoDeDespesa);
+        tituloPagar.cadastrar(ultimoFornecedor, ultimoTipoDePagamento);
         LisaDeTitulosPagar.add(tituloPagar);
-        System.out.println("Título à PAGAR cadastrado com sucesso!");
+        System.out.println("*-------------------------------------*");
+        System.out.println("Novo Título à PAGAR cadastrado com sucesso! ");
+        System.out.println("*-------------------------------------*");
+
         System.out.println(tituloPagar);
     }
 
     public void lancarRecebimento() {
-        System.out.println("Escolha o título à Receber que quer lançar uma quitação: ");
+
+        System.out.println("Por favor, escolha o título a receber para o qual deseja registrar uma quitação: ");
 
         Collections.sort(listaDeTitulosReceber, comparing(Receber::getId));
-        System.out.println("Escolha o título à RECEBER que será liquidado: ");
+
+        System.out.println("Títulos À RECEBER: ");
+        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+
         int i = 1;
         for (Receber x : listaDeTitulosReceber) {
             System.out.println(i + " - " + x);
@@ -425,21 +477,21 @@ public class Controlador {
         //Do valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
         do {
             int recebimentoEscolhido = 0;
-            System.out.print("Digite o número do título: ");
+            System.out.print("Digite o número do Título desejado: ");
             recebimentoEscolhido = teclado.nextInt();
             teclado.nextLine();
 
             //Aqui ele verifica se o número informado é maior que zero e menor que o último da lista
             if (recebimentoEscolhido > 0 && recebimentoEscolhido <= listaDeTitulosReceber.size()) {
                 Receber recebimentoSelecionado = listaDeTitulosReceber.get(recebimentoEscolhido - 1);
-                System.out.println("Título selecionado foi: " + recebimentoSelecionado);
+                System.out.println("Título selecionado: " + recebimentoSelecionado);
                 //Armazeno o credor selecionado em uma variável que será vinculada ao crédito
                 ultimoRecebimento = listaDeTitulosReceber.getLast();
                 //Validação dessa ação, caso não seja validado ele informa o else e refaz o do while
                 escolhaValida = true;
 
             } else {
-                System.out.println("Opção inválida.");
+                System.out.println("Opção inválida. ☹\uFE0F ");
             }
 
         } while (!escolhaValida);
@@ -447,7 +499,10 @@ public class Controlador {
         Credito credito = new Credito();
         credito.cadastrar(ultimoRecebimento);
         ListaDeLancamentosCreditos.add(credito);
+        System.out.println(credito);
     }
+
+
 //
 //    public void gerarRelatorioDespesasPorPeriodo() {
 //        relatorio.gerarRelatorioDespesasPorPeriodo();
@@ -458,6 +513,6 @@ public class Controlador {
 //    }
 
     public void exibirSaldo() {
-        relatorio.exibirSaldo();
+        contaMovimento.toString();
     }
 }

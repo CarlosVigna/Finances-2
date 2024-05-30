@@ -2,27 +2,26 @@ package view;
 
 import java.util.Date;
 
-public class Pagar extends TipoDeDespesa {
+public class Pagar extends TipoDePagamento {
 
   private int id;
   private String situacao;
   private Date dtVenc;
   private String historico;
   private double valor;
-  private double liquidado;
   Fornecedor fornecedor;
-  TipoDeDespesa tipoDeDespesa;
+  TipoDePagamento tipoDePagamento;
 
   private static ContaMovimento contaMovimento = new ContaMovimento();
 
-  public Pagar(int id, String situacao, Date dtVenc, String historico, double valor, double liquidado, TipoDeDespesa tipoDeDespesa) {
+  public Pagar(int id, String situacao, Date dtVenc, String historico, double valor, TipoDePagamento tipoDePagamento) {
     this.id = id;
     this.situacao = situacao;
     this.dtVenc = dtVenc;
     this.historico = historico;
     this.valor = valor;
-    this.liquidado = liquidado;
-    this.tipoDeDespesa = tipoDeDespesa;
+
+    this.tipoDePagamento = tipoDePagamento;
   }
 
   public Pagar() {
@@ -61,14 +60,6 @@ public class Pagar extends TipoDeDespesa {
     this.valor = valor;
   }
 
-  public double getLiquidado() {
-    return liquidado;
-  }
-
-  public void setLiquidado(double liquidado) {
-    this.liquidado = liquidado;
-  }
-
   public String getSituacao() {
     return situacao;
   }
@@ -77,19 +68,19 @@ public class Pagar extends TipoDeDespesa {
     this.situacao = situacao;
   }
 
-  public TipoDeDespesa getTipoDeDespesa() {
-    return tipoDeDespesa;
+  public TipoDePagamento getTipoDeDespesa() {
+    return tipoDePagamento;
   }
 
-  public void setTipoDeDespesa(TipoDeDespesa tipoDeDespesa) {
-    this.tipoDeDespesa = tipoDeDespesa;
+  public void setTipoDeDespesa(TipoDePagamento tipoDePagamento) {
+    this.tipoDePagamento = tipoDePagamento;
   }
 
 
-  public void cadastrar(Fornecedor fornecedor, TipoDeDespesa tipoDeDespesa) {
+  public void cadastrar(Fornecedor fornecedor, TipoDePagamento tipoDePagamento) {
 
     this.fornecedor = fornecedor;
-    this.tipoDeDespesa = tipoDeDespesa;
+    this.tipoDePagamento = tipoDePagamento;
     teclado.nextLine();
     System.out.println("Informe o ID do título à PAGAR: ");
     id = teclado.nextInt();
@@ -98,14 +89,10 @@ public class Pagar extends TipoDeDespesa {
     historico = teclado.nextLine();
     System.out.println("Informe o Valor: ");
     valor = teclado.nextDouble();
-    teclado.nextLine();
     System.out.println("Informe a Data de Vencimento (yyyy-MM-dd): ");
     dtVenc = java.sql.Date.valueOf(teclado.nextLine());
     System.out.println("Informe a Situação: ");
     situacao = teclado.nextLine();
-    System.out.println("Informe o Valor Liquidado: ");
-    liquidado = teclado.nextDouble();
-    teclado.nextLine();
 
     contaMovimento.adicionarPagamento(valor);
   }
@@ -117,9 +104,10 @@ public class Pagar extends TipoDeDespesa {
 
   public String toString()
   {
-    return  "Nome do Fornecedor: " + fornecedor.getNome() + " Telefone do Fornecedor: " + fornecedor.getTelefone() + " Tipo de Despesa: "
-            + tipoDeDespesa.getNome() +  "Valor do título à PAGAR: " + getValor() + "Data de vencimento: " + getDtVenc() + "Situação: " + getSituacao()
-            + "Valor liquidado: " + getLiquidado();
+    return  "Nome do Fornecedor: " + fornecedor.getNome() + " Telefone do Fornecedor: "
+            + fornecedor.getTelefone() + " Tipo de Despesa: "
+            + tipoDePagamento.getNome() +  "Valor do título à PAGAR: " + getValor()
+            + "Data de vencimento: " + getDtVenc() + "Situação: " + getSituacao();
   }
 
 

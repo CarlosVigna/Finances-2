@@ -56,6 +56,7 @@ public class Credor {
 
   @Override
   public String toString() {
+
     return "Credor: " + getNome();
   }
 

@@ -67,19 +67,17 @@ public class ContaMovimento {
     System.out.println("SHOW ");
   }
 
-
-  public double calcularSaldo() {
-    return totalRecebimentos - totalPagamentos + totalCreditos - totalDebitos;
+  public void calcularSaldoLiquido() {
+    double saldoLiquido = totalCreditos - totalDebitos;
+    System.out.printf("Saldo líquido = R$" + saldoLiquido);
   }
 
-  public void exibirSaldo() {
-    ContaMovimento contaMovimento = new ContaMovimento();
-    double saldo = contaMovimento.calcularSaldo();
-    System.out.println("Saldo atual: " + saldo);
+  public void calcularSaldoBruto(){
+    double saldoBruto = totalRecebimentos - totalPagamentos;
+    System.out.println("Saldo Bruto = R$" + saldoBruto);
+  }
+
+  public void exibeCreditos(){
+    double totalCreditos = getTotalCreditos();
   }
 }
-
-
-//    public void gerarRelatorioDespesasPorPeriodo(LocalDate inicio, LocalDate fim) {
-//    }
-//}
