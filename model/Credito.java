@@ -3,10 +3,8 @@ package view;
 import java.util.*;
 
 /**
- * Esta classe representa uma transação de crédito.
- * Ela fornece métodos para criar e gerenciar transações de crédito.
+ * Essa classe representa uma transação de crédito.
  */
-
 public class Credito {
 
   Scanner teclado = new Scanner(System.in);
@@ -26,8 +24,8 @@ public class Credito {
   }
 
   /**
-   * Construtor para a classe Crédito.
-   * @param id O ID da transação de crédito.
+   * Construtor com parâmetros.
+   * @param id O id da transação de crédito.
    * @param valor O valor da transação de crédito.
    * @param dtPag A data da transação de crédito.
    */
@@ -38,23 +36,23 @@ public class Credito {
   }
 
   /**
-   * Esse método é usado para obter (get) o ID da transação de crédito.
-   * @return O ID da transação de crédito.
+   * Getter para id.
+   * @return O id da transação de crédito.
    */
   public int getId() {
     return id;
   }
 
   /**
-   * Esse método é usado para definir (set) o ID da transação de crédito.
-   * @param id O ID da transação de crédito.
+   * Setter para id.
+   * @param id O novo id da transação de crédito.
    */
   public void setId(int id) {
     this.id = id;
   }
 
   /**
-   * Esse método é usado para obter (get) o valor da transação de crédito.
+   * Getter para valor.
    * @return O valor da transação de crédito.
    */
   public double getValor() {
@@ -62,15 +60,15 @@ public class Credito {
   }
 
   /**
-   * Esse método é usado para definir (set) o valor da transação de crédito.
-   * @param valor O valor da transação de crédito.
+   * Setter para valor.
+   * @param valor O novo valor da transação de crédito.
    */
   public void setValor(double valor) {
     this.valor = valor;
   }
 
   /**
-   * Esse método é usado para obter (get) a data da transação de crédito.
+   * Getter para dtPag.
    * @return A data da transação de crédito.
    */
   public Date getDtPag() {
@@ -78,16 +76,16 @@ public class Credito {
   }
 
   /**
-   * Esse método é usado para definir (set) a data da transação de crédito.
-   * @param dtPag A data da transação de crédito.
+   * Setter para dtPag.
+   * @param dtPag A nova data da transação de crédito.
    */
   public void setDtPag(Date dtPag) {
     this.dtPag = dtPag;
   }
 
   /**
-   * Esse método é usado para registrar uma transação de crédito.
-   * @param receber Uma instância da classe Receber.
+   * Esse método é usado para registrar uma nova transação de crédito.
+   * @param receber O objeto Receber associado à transação de crédito.
    */
   public void cadastrar(Receber receber) {
     this.receber = receber;
@@ -104,22 +102,18 @@ public class Credito {
 
     contaMovimento.adicionarCredito(valor);
 
+    /**
+     * Esse método é usado para imprimir os detalhes da transação de crédito.
+     * @return Uma representação em string da transação de crédito.
+     */
   }
   public String toString(){
     return "Título relacionado: " + receber + "\n Valor Recebido: R$" + valor + "\n Data do Recebimento: " + dtPag;
   }
 
   /**
-   * Esse método é usado para obter uma representação em string da transação de crédito.
-   * @return Uma representação em string da transação de crédito.
-   */
-  public String toString(){
-    return "Título relacionado: " + receber + "\n Valor Recebido: R$" + valor + "\n Data do Recebimento: " + dtPag;
-  }
-
-  /**
-   * Esse método é usado para obter a movimentação da conta.
-   * @return Uma instância da classe ContaMovimento.
+   * getter para contaMovimento.
+   * @return O objeto ContaMovimento associado à transação de crédito.
    */
   public static ContaMovimento getContaMovimento() {
     return contaMovimento;
