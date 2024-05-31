@@ -81,7 +81,7 @@ public class TipoDeRecebimento {
   {
     System.out.println("Informe o ID do tipo de Recebimento: ");
     id = teclado.nextInt();
-    System.out.println("Informe o  o tipo de Recebimento: ");
+    System.out.println("Informe o tipo de Recebimento: ");
     nome = teclado.nextLine();
     teclado.nextLine();
      }

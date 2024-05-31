@@ -3,8 +3,7 @@ package view;
 import java.util.*;
 
 /**
- * Esse método é usado para obter a movimentação da conta.
- * @return Uma instância da classe ContaMovimento.
+ * Essa classe representa uma transação de débito.
  */
 public class Debito {
 
