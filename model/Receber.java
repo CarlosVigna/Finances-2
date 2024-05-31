@@ -9,18 +9,18 @@ import java.util.Scanner;
  */
 public class Receber {
 
-    private int id;
-    private Date dtVenc;
-    private String historico;
-    private double valor;
-    private String situacao;
-    private static double totalAReceber;
-    Credor credor;
-    TipoDeRecebimento tipoDeRecebimento;
+        private int id;
+        private Date dtVenc;
+        private String historico;
+        private double valor;
+        private String situacao;
+        private static double totalAReceber;
+        Credor credor;
+        TipoDeRecebimento tipoDeRecebimento;
 
-    Scanner teclado = new Scanner(System.in);
+        Scanner teclado = new Scanner(System.in);
 
-    private static ContaMovimento contaMovimento = new ContaMovimento();
+        private static ContaMovimento contaMovimento = new ContaMovimento();
 
     /**
      * Construtor padrão para a classe Receber.
@@ -47,53 +47,53 @@ public class Receber {
         this.dtVenc = dtVenc;
     }
 
-    public int getId() {
-        return id;
-    }
+        public int getId() {
+            return id;
+        }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+        public void setId(int id) {
+            this.id = id;
+        }
 
-    public Date getDtVenc() {
-        return dtVenc;
-    }
+        public Date getDtVenc() {
+            return dtVenc;
+        }
 
-    public void setDtVenc(Date dtVenc) {
-        this.dtVenc = dtVenc;
-    }
+        public void setDtVenc(Date dtVenc) {
+            this.dtVenc = dtVenc;
+        }
 
-    public String getHistorico() {
-        return historico;
-    }
+        public String getHistorico() {
+            return historico;
+        }
 
-    public void setHistorico(String historico) {
-        this.historico = historico;
-    }
+        public void setHistorico(String historico) {
+            this.historico = historico;
+        }
 
-    public double getValor() {
-        return valor;
-    }
+        public double getValor() {
+            return valor;
+        }
 
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
+        public void setValor(double valor) {
+            this.valor = valor;
+        }
 
-    public String getSituacao() {
-        return situacao;
-    }
+        public String getSituacao() {
+            return situacao;
+        }
 
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
+        public void setSituacao(String situacao) {
+            this.situacao = situacao;
+        }
 
-    public TipoDeRecebimento getTipoDeReceita() {
-        return tipoDeRecebimento;
-    }
+        public TipoDeRecebimento getTipoDeReceita() {
+            return tipoDeRecebimento;
+        }
 
-    public void setTipoDeReceita(TipoDeRecebimento tipoDeRecebimento) {
-        this.tipoDeRecebimento = tipoDeRecebimento;
-    }
+        public void setTipoDeReceita(TipoDeRecebimento tipoDeRecebimento) {
+            this.tipoDeRecebimento = tipoDeRecebimento;
+        }
 
     /**
      * Esse método é usado para registrar uma conta a receber.
@@ -115,9 +115,9 @@ public class Receber {
         System.out.println("Informe a Situação: ");
         situacao = teclado.nextLine();
 
-        contaMovimento.adicionarRecebimento(valor);
+            contaMovimento.adicionarRecebimento(valor);
 
-    }
+        }
 
     /**
      * Esse método é usado para obter uma representação em string da conta a receber.
@@ -133,7 +133,11 @@ public class Receber {
      */
     public static ContaMovimento getContaMovimento() {
 
-        return contaMovimento;
+            return contaMovimento;
+        }
+
     }
 
-}
+
+
+

@@ -105,6 +105,9 @@ public class Credito {
     contaMovimento.adicionarCredito(valor);
 
   }
+  public String toString(){
+    return "Título relacionado: " + receber + "\n Valor Recebido: R$" + valor + "\n Data do Recebimento: " + dtPag;
+  }
 
   /**
    * Esse método é usado para obter uma representação em string da transação de crédito.

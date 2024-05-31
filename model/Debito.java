@@ -10,12 +10,12 @@ public class Debito {
 
   Scanner teclado = new Scanner(System.in);
 
-  private int id;
-  private double valor;
-  private Date dtPag;
-  Pagar pagar;
+    private int id;
+    private double valor;
+    private Date dtPag;
+    Pagar pagar;
 
-  private static ContaMovimento contaMovimento = new ContaMovimento();
+    private static ContaMovimento contaMovimento = new ContaMovimento();
 
   /**
    * Construtor padrão para a classe Debito.
@@ -99,9 +99,9 @@ public class Debito {
     valor = teclado.nextDouble();
     teclado.nextLine();
 
-    contaMovimento.adicionarDebito(valor);
+      contaMovimento.adicionarDebito(valor);
 
-  }
+    }
 
   /**
    * Esse método é usado para obter uma representação em string da transação de débito.
@@ -119,3 +119,6 @@ public class Debito {
     return contaMovimento;
   }
 }
+
+
+
