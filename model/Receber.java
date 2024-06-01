@@ -125,7 +125,7 @@ public class Receber {
      * @return Uma representação em string da conta a receber.
      */
     public String toString() {
-        return "Credor: " + credor.getNome() + "\n Valor do Título: R$" + valor + "\n Data de vencimento: " + dtVenc;
+        return "Credor: " + credor.getNome() + "\n Valor do Título: R$" + valor + "\n Data de vencimento: " + dtVenc + "\n";
     }
 
 //<<<<<<< HEAD

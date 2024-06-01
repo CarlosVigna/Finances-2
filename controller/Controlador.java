@@ -212,7 +212,7 @@ public class Controlador {
                 do {
 
 
-                    Collections.sort(ListaDeCredores, comparing(Credor::getId));
+                    Collections.sort(ListaDeTipoDeRecebimento, comparing(TipoDeRecebimento::getId));
                     System.out.println("Escolha o Tipo Recebimento da lista abaixo:");
                     System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
                     int i = 1;
@@ -338,7 +338,7 @@ public class Controlador {
                 }
 
             } else {
-                Collections.sort(ListaDeCredores, comparing(Credor::getNome));
+                Collections.sort(ListaDeFornecedores, comparing(Fornecedor::getNome));
                 System.out.println("Escolha um Fornecedor da lista abaixo:");
                 System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
 
@@ -482,6 +482,7 @@ public class Controlador {
         System.out.println("*-------------------------------------*");
 
         System.out.println(tituloPagar);
+        contaMovimento.adicionarPagamento(tituloPagar.getValor());
     }
 
     /**
@@ -530,6 +531,7 @@ public class Controlador {
         credito.cadastrar(ultimoRecebimento);
         ListaDeLancamentosCreditos.add(credito);
         System.out.println(credito);
+        contaMovimento.adicionarCredito(credito.getValor());
     }
 
 
@@ -542,10 +544,29 @@ public class Controlador {
 //        relatorio.gerarRelatorioRecebimentosPorPeriodo();
 //    }
 
+
+    public void exibirTotalRecebimento(){
+        System.out.println(listaDeTitulosReceber);
+        System.out.printf("Total dos títulos a RECEBER R$" + contaMovimento.getTotalRecebimentos());
+    }
+
+    public void exibirTotalPagamento(){
+        System.out.println(LisaDeTitulosPagar);
+        System.out.printf("Total dos títulos a PAGAR R$" + contaMovimento.getTotalPagamentos());
+    }
+
+    public void exibirSaldoBruto(){
+        contaMovimento.calculaSaldoBruto();
+        System.out.println("Total de títulos a RECEBER R$" + contaMovimento.getTotalRecebimentos());
+        System.out.println("Total de títulos a PAGAR R$" + contaMovimento.getTotalPagamentos());
+        System.out.printf("Saldo Bruto R$" + contaMovimento.getSaldoBruto());
+    }
+
+
     /**
      * Esse método é usado para exibir o saldo da movimentação da conta.
      */
-    public void exibirSaldo() {
-        System.out.println(contaMovimento.getTotalRecebimentos());;
-    }
+//    public void exibirSaldo() {
+//        System.out.println(contaMovimento.getTotalRecebimentos());;
+//    }
 }

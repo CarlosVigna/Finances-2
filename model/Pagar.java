@@ -1,6 +1,7 @@
 package view;
 
-import java.util.Date;
+import static java.sql.Date.valueOf;
+
 
 /**
  * Esta classe representa uma conta a pagar.
@@ -10,7 +11,7 @@ public class Pagar extends TipoDePagamento {
 
   private int id;
   private String situacao;
-  private Date dtVenc;
+  private String dtVenc;
   private String historico;
   private double valor;
   Fornecedor fornecedor;
@@ -27,7 +28,7 @@ public class Pagar extends TipoDePagamento {
    * @param valor O valor do pagamento.
    * @param tipoDePagamento O tipo de pagamento.
    */
-  public Pagar(int id, String situacao, Date dtVenc, String historico, double valor, TipoDePagamento tipoDePagamento) {
+  public Pagar(int id, String situacao, String dtVenc, String historico, double valor, TipoDePagamento tipoDePagamento) {
     this.id = id;
     this.situacao = situacao;
     this.dtVenc = dtVenc;
@@ -52,11 +53,11 @@ public class Pagar extends TipoDePagamento {
     this.id = id;
   }
 
-  public Date getDtVenc() {
+  public String getDtVenc() {
     return dtVenc;
   }
 
-  public void setDtVenc(Date dtVenc) {
+  public void setDtVenc(String dtVenc) {
     this.dtVenc = dtVenc;
   }
 
@@ -109,12 +110,12 @@ public class Pagar extends TipoDePagamento {
     historico = teclado.nextLine();
     System.out.println("Informe o Valor: ");
     valor = teclado.nextDouble();
+    teclado.nextLine();
     System.out.println("Informe a Data de Vencimento (yyyy-MM-dd): ");
-    dtVenc = java.sql.Date.valueOf(teclado.nextLine());
+    dtVenc = teclado.nextLine();
     System.out.println("Informe a Situação: ");
     situacao = teclado.nextLine();
 
-    contaMovimento.adicionarPagamento(valor);
   }
 
   /**

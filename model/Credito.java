@@ -100,8 +100,6 @@ public class Credito {
     valor = teclado.nextDouble();
     teclado.nextLine();
 
-    contaMovimento.adicionarCredito(valor);
-
     /**
      * Esse método é usado para imprimir os detalhes da transação de crédito.
      * @return Uma representação em string da transação de crédito.

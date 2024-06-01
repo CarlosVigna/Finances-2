@@ -11,6 +11,7 @@ public class ContaMovimento {
   private double totalCreditos = 0;
   private double totalDebitos = 0;
   private Receber receber;
+  private double saldoBruto = 0;
 
 
   /**
@@ -41,6 +42,14 @@ public class ContaMovimento {
    */
   public String getTotalRecebimentos() {
     return String.valueOf(totalRecebimentos);
+  }
+
+  public double getSaldoBruto() {
+    return saldoBruto;
+  }
+
+  public void setSaldoBruto(double saldoBruto) {
+    this.saldoBruto = saldoBruto;
   }
 
   /**
@@ -106,36 +115,9 @@ public class ContaMovimento {
     this.totalDebitos += valor;
   }
 
-//<<<<<<< HEAD
-//  @Override
-//  public String toString() {
-//    return  "TOTAL RECEBIMENTO" + totalRecebimentos;
-//  }
-
-//  public void imprimeSaldos() {
-//    System.out.println("Total de Recebimentos: " + this.totalRecebimentos);
-//    System.out.println("Total de Pagamentos: " + this.totalPagamentos);
-//    System.out.println("Total de Créditos: " + this.totalCreditos);
-//    System.out.println("Total de Débitos: " + this.totalDebitos);
-//    System.out.println("SHOW ");
-//  }
-//
-//  public void calcularSaldoLiquido() {
-//    double saldoLiquido = totalCreditos - totalDebitos;
-//    System.out.printf("Saldo líquido = R$" + saldoLiquido);
-//  }
-//
-//  public void calcularSaldoBruto(){
-//    double saldoBruto = totalRecebimentos - totalPagamentos;
-//    System.out.println("Saldo Bruto = R$" + saldoBruto);
-//  }
-//
-//  public void exibeCreditos(){
-//    double totalCreditos = getTotalCreditos();
-
-
-//=======
-
+  public void calculaSaldoBruto(){
+    this.saldoBruto = this.totalRecebimentos - this.totalPagamentos;
+  }
   /**
    * Esse método é usado para obter uma representação em string da movimentação da conta.
    *
@@ -181,8 +163,8 @@ public class ContaMovimento {
   /**
    * Esse método é usado para exibir o total de créditos.
    */
-  public void exibeCreditos() {
-    double totalCreditos = getTotalCreditos();
-  }
+//  public void exibeCreditos() {
+//    double totalCreditos = getTotalCreditos();
+//  }
 }
 

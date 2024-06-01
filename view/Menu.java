@@ -95,8 +95,8 @@ public class Menu {
         int escolha;
         do {
             System.out.println("\nEscolha o relatório que deseja gerar:");
-            //System.out.println("1 - Relatório de Pagamentos por Período");
-           // System.out.println("2 - Relatório de Recebimentos por Período");
+            System.out.println("1 - Relatório de Títulos a Receber");
+            System.out.println("2 - Relatório de Títulos a Pagar");
             System.out.println("3 - Saldo Atual");
             System.out.println("4 - Voltar ao Menu Principal");
 
@@ -106,14 +106,14 @@ public class Menu {
                 escolha = teclado.nextInt();
                 teclado.nextLine();
                 switch (escolha) {
-//                    case 1:
-//                        controlador.gerarRelatorioDespesasPorPeriodo();
-//                        break;
-//                    case 2:
-//                        controlador.gerarRelatorioRecebimentosPorPeriodo();
-//                        break;
+                    case 1:
+                        controlador.exibirTotalRecebimento();
+                        break;
+                    case 2:
+                        controlador.exibirTotalPagamento();
+                        break;
                     case 3:
-                        controlador.exibirSaldo();
+                        controlador.exibirSaldoBruto();
                         break;
                     case 4:
                         return; // Volta pro menu principal

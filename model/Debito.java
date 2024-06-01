@@ -98,7 +98,6 @@ public class Debito {
     valor = teclado.nextDouble();
     teclado.nextLine();
 
-      contaMovimento.adicionarDebito(valor);
 
     }
 
