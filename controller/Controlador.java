@@ -7,6 +7,10 @@ import java.util.Scanner;
 
 import static java.util.Comparator.comparing;
 
+/**
+ * Esta classe representa um controlador para gerenciamento de contas, credores, fornecedores, pagamentos e recebimentos.
+ * Ela fornece métodos para criar e gerenciar essas entidades.
+ */
 public class Controlador {
 
     Scanner teclado = new Scanner(System.in);
@@ -14,35 +18,38 @@ public class Controlador {
     private ContaMovimento contaMovimento = new ContaMovimento();
     private Relatorio relatorio = new Relatorio(contaMovimento);
 
-    //Listagem de contas À RECEBER
+    //Listagem de contas a RECEBER
     ArrayList<Credor> ListaDeCredores = new ArrayList<>();
     ArrayList<TipoDeRecebimento> ListaDeTipoDeRecebimento = new ArrayList<>();
     ArrayList<Receber> listaDeTitulosReceber = new ArrayList<>();
-    //Listagem de contas À PAGAR
+    //Listagem de contas a PAGAR
     ArrayList<Fornecedor> ListaDeFornecedores = new ArrayList<>();
     ArrayList<TipoDePagamento> listaDeTipoDePagamento = new ArrayList<>();
     ArrayList<Pagar> LisaDeTitulosPagar = new ArrayList<>();
-    //lISTAGEM DE LANÇAMENTOS
+    //Listagem de LANÇAMENTOS
     ArrayList<Credito>ListaDeLancamentosCreditos = new ArrayList<>();
     ArrayList<Debito>ListaDeLancamentosDebitos = new ArrayList<>();
-    //Instanciação dos objetos de classes (CONTAS À RECEBER)
+    //Instanciação dos objetos de classes (CONTAS a RECEBER)
     Credor credor = new Credor(0, null, null);
     TipoDeRecebimento tipoRecebimento = new TipoDeRecebimento(0,null);
 
-    //Objetos criados para armazenar as informações que vão para o título à Receber que está sendo criado no momento
+    //Objetos criados para armazenar as informações que vão para o título a receber que está sendo criado no momento
     Credor ultimoCredor = new Credor();
     TipoDeRecebimento ultimoTipoDeRecebimento = new TipoDeRecebimento();
     Receber ultimoRecebimento = new Receber();
 
-    //Instanciação dos objetos de classes (CONTAS À PAGAR)
+    //Instanciação dos objetos de classes (CONTAS a PAGAR)
     Fornecedor fornecedor = new Fornecedor();
     TipoDePagamento tipoDePagamento = new TipoDePagamento();
 
-    //Objetos criados para armazenar as informações que vão para o título à Pagar que está sendo criado no momento
+    //Objetos criados para armazenar as informações que vão para o título a pagar que está sendo criado no momento
     Fornecedor ultimoFornecedor = new Fornecedor();
     TipoDePagamento ultimoTipoDePagamento = new TipoDePagamento();
     Pagar ultimoPagamento = new Pagar();
 
+    /**
+     * Esse método é usado para registrar um novo credor.
+     */
     public void cadastrarCredor() {
 
         credor = new Credor();
@@ -55,6 +62,9 @@ public class Controlador {
         System.out.println("*----------------------------*");
     }
 
+    /**
+     * Esse método é usado para registrar um novo tipo de recebimento.
+     */
     public void cadastrarTipoDeRecebimento() {
 
         tipoRecebimento = new TipoDeRecebimento();
@@ -67,8 +77,11 @@ public class Controlador {
         System.out.println("*-----------------------------------------*");
     }
 
+    /**
+     * Esse método é usado para registrar um novo título para receber.
+     */
     public void cadastrarTituloReceber() {
-        int escolhaReceber; // variável pra essa situação de escolher um cadastrado ou cadastrar um novo.
+        int escolhaReceber; // variável para essa situação de escolher um cadastrado ou cadastrar um novo.
 
         Receber tituloReceber = new Receber();
 
@@ -89,7 +102,7 @@ public class Controlador {
             if (ListaDeCredores.isEmpty()) {
                 System.out.println("Não há credores cadastrados!! ;(");
                 System.out.println("Deseja cadastrar um novo Credor? \n1-Sim, 2-Não");
-                System.out.println("");
+                System.out.println();
                 escolhaCadastrarCredor = teclado.nextInt();
 
                 if (escolhaCadastrarCredor == 1) {
@@ -115,7 +128,7 @@ public class Controlador {
                 //boolean que determina se o do while continua ou nem
                 boolean escolhaValida = false;
 
-                //Do valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
+                //"do" valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
                 do {
                     int credorEscolhido = 0;
                     System.out.print("Digite o número do credor: ");
@@ -153,7 +166,7 @@ public class Controlador {
             System.out.println("Opção inválida.");
         }
 
-        int escolhaTipoTituloReceber; // variável pra essa situação de escolher um tipo ja cadastrado ou cadastrar um novo.
+        int escolhaTipoTituloReceber; // variável para essa situação de escolher um tipo ja cadastrado ou cadastrar um novo.
 
         System.out.println("Próximo passo: ");
         System.out.println("1 - Adicionar um Tipo de Recebimento já cadastrado.");
@@ -252,6 +265,9 @@ public class Controlador {
 
     }
 
+    /**
+     * Esse método é usado para registrar um novo fornecedor.
+     */
     public void cadastrarFornecedor() {
         fornecedor = new Fornecedor();
         fornecedor.cadastrar();
@@ -262,6 +278,9 @@ public class Controlador {
         System.out.println("*-------------------------------------*");
     }
 
+    /**
+     * Esse método é usado para registrar um novo tipo de despesa.
+     */
     public void cadastrarTipoDeDespesa() {
         tipoDePagamento = new TipoDePagamento();
         tipoDePagamento.cadastrar();
@@ -272,8 +291,11 @@ public class Controlador {
         System.out.println("*------------------------------------------*");
     }
 
+    /**
+     * Esse método é usado para registrar um novo título para pagamento.
+     */
     public void cadastrarTituloPagar() {
-        int escolhaPagar; // variável pra essa situação de escolher um cadastrado ou cadastrar um novo.
+        int escolhaPagar; // variável para essa situação de escolher um cadastrado ou cadastrar um novo.
 
         Pagar tituloPagar = new Pagar();
 
@@ -294,7 +316,7 @@ public class Controlador {
             if (ListaDeCredores.isEmpty()) {
                 System.out.println("Não há Fornecedores cadastrados!! ;( ");
                 System.out.println("Deseja cadastrar um novo Fornecedor? \n1-Sim, 2-Não");
-                System.out.println("");
+                System.out.println();
                 escolhaCadastrarFornecedor = teclado.nextInt();
 
                 if (escolhaCadastrarFornecedor == 1) {
@@ -328,7 +350,7 @@ public class Controlador {
                 //boolean que determina se o do while continua ou nem
                 boolean escolhaValida = false;
 
-                //Do valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
+                //"do" valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
                 do {
                     int fornecedorEscolhido = 0;
                     System.out.print("Digite o número do Fornecedor: ");
@@ -368,7 +390,7 @@ public class Controlador {
 
         }
 
-        int escolhaTipoTituloPagar; // variável pra essa situação de escolher um tipo ja cadastrado ou cadastrar um novo.
+        int escolhaTipoTituloPagar; // variável para essa situação de escolher um tipo ja cadastrado ou cadastrar um novo.
         System.out.println("Próximo passo: ");
         System.out.println("1 - Informar um Tipo de Pagamento já cadastrado.");
         System.out.println("2 - Cadastrar um novo Tipo de Pagamento.");
@@ -378,13 +400,14 @@ public class Controlador {
         escolhaTipoTituloPagar = teclado.nextInt();
         teclado.nextLine();
 
+
         int escolhaCadastrarTipoPagamento = 0;
 
         // isEmpty é pra ver se tá vazio
         if (escolhaTipoTituloPagar == 1) {
 
             if (listaDeTipoDePagamento.isEmpty()) {
-                System.out.println("Não enhum Tipo de Pagamento cadastrado.");
+                System.out.println("Nenhum Tipo de Pagamento cadastrado.");
                 System.out.println("Deseja cadastrar um novo Tipo de Pagamento? \n1-Sim, 2-Não");
                 escolhaCadastrarTipoPagamento = teclado.nextInt();
 
@@ -461,6 +484,9 @@ public class Controlador {
         System.out.println(tituloPagar);
     }
 
+    /**
+     * Esse método é usado para registrar um novo recebimento.
+     */
     public void lancarRecebimento() {
 
         System.out.println("Por favor, escolha o título a receber para o qual deseja registrar uma quitação: ");
@@ -478,7 +504,7 @@ public class Controlador {
         //boolean que determina se o do while continua ou nem
         boolean escolhaValida = false;
 
-        //Do valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
+        //"do" valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
         do {
             int recebimentoEscolhido = 0;
             System.out.print("Digite o número do Título desejado: ");
@@ -507,7 +533,7 @@ public class Controlador {
     }
 
 
-//
+
 //    public void gerarRelatorioDespesasPorPeriodo() {
 //        relatorio.gerarRelatorioDespesasPorPeriodo();
 //    }
@@ -516,6 +542,9 @@ public class Controlador {
 //        relatorio.gerarRelatorioRecebimentosPorPeriodo();
 //    }
 
+    /**
+     * Esse método é usado para exibir o saldo da movimentação da conta.
+     */
     public void exibirSaldo() {
         System.out.println(contaMovimento.getTotalRecebimentos());;
     }

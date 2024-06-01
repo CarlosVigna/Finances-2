@@ -4,16 +4,26 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-
+/**
+ * Essa classe representa um menu para interagir com a classe Controlador.
+ * Ela fornece métodos para exibir o menu principal e o menu de relatório.
+ */
 public class Menu {
     private Scanner teclado = new Scanner(System.in);
     private Controlador controlador;
 
+    /**
+     * Construtor da classe Menu.
+     * @param controlador Uma instância da classe Controlador.
+     */
     public Menu(Controlador controlador) {
 
         this.controlador = controlador;
     }
 
+    /**
+     * Esse método é usado para exibir o menu principal e tratar a entrada do usuário.
+     */
     public void exibirMenuPrincipal() {
         int escolha = 0;
         do {
@@ -78,6 +88,9 @@ public class Menu {
         } while (escolha != 10);
     }
 
+    /**
+     * Esse método é usado para exibir o menu do relatório e tratar a entrada do usuário.
+     */
     private void exibirMenuRelatorio() {
         int escolha;
         do {

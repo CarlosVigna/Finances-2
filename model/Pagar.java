@@ -2,6 +2,10 @@ package view;
 
 import java.util.Date;
 
+/**
+ * Esta classe representa uma conta a pagar.
+ * Ela se estende da classe TipoDePagamento e fornece métodos para criar e gerenciar pagamentos.
+ */
 public class Pagar extends TipoDePagamento {
 
   private int id;
@@ -14,6 +18,15 @@ public class Pagar extends TipoDePagamento {
 
   private static ContaMovimento contaMovimento = new ContaMovimento();
 
+  /**
+   * Construtor para a classe Pagar.
+   * @param id O ID do pagamento.
+   * @param situacao A situação do pagamento.
+   * @param dtVenc A data de vencimento do pagamento.
+   * @param historico O histórico do pagamento.
+   * @param valor O valor do pagamento.
+   * @param tipoDePagamento O tipo de pagamento.
+   */
   public Pagar(int id, String situacao, Date dtVenc, String historico, double valor, TipoDePagamento tipoDePagamento) {
     this.id = id;
     this.situacao = situacao;
@@ -24,6 +37,9 @@ public class Pagar extends TipoDePagamento {
     this.tipoDePagamento = tipoDePagamento;
   }
 
+  /**
+   * Construtor padrão para a classe Pagar.
+   */
   public Pagar() {
 
   }
@@ -76,7 +92,11 @@ public class Pagar extends TipoDePagamento {
     this.tipoDePagamento = tipoDePagamento;
   }
 
-
+  /**
+   * Esse método é usado para registrar um pagamento.
+   * @param fornecedor O fornecedor do pagamento.
+   * @param tipoDePagamento O tipo de pagamento.
+   */
   public void cadastrar(Fornecedor fornecedor, TipoDePagamento tipoDePagamento) {
 
     this.fornecedor = fornecedor;
@@ -97,11 +117,18 @@ public class Pagar extends TipoDePagamento {
     contaMovimento.adicionarPagamento(valor);
   }
 
+  /**
+   * Esse método é usado para obter a movimentação da conta.
+   * @return Uma instância da classe ContaMovimento.
+   */
   public static ContaMovimento getContaMovimento() {
     return contaMovimento;
   }
 
-
+  /**
+   * Esse método é usado para obter uma representação em string do pagamento.
+   * @return Uma representação em string do pagamento.
+   */
   public String toString(){
     return "Fornecedor: " + fornecedor.getNome() + "\n Valor do Título: R$" + valor + "\n Data de vencimento: " + dtVenc;
   }
