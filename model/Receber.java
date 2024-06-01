@@ -93,17 +93,10 @@ import java.util.Scanner;
             System.out.println("Informe a Situação: ");
             situacao = teclado.nextLine();
 
-            contaMovimento.adicionarRecebimento(valor);
-
-        }
+            }
 
         public String toString(){
             return "Credor: " + credor.getNome() + "\n Valor do Título: R$" + valor + "\n Data de vencimento: " + dtVenc;
-        }
-
-        public static ContaMovimento getContaMovimento() {
-
-            return contaMovimento;
         }
 
     }

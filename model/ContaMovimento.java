@@ -6,6 +6,8 @@ public class ContaMovimento {
   private double totalPagamentos = 0;
   private double totalCreditos = 0;
   private double totalDebitos = 0;
+  private Receber receber;
+
 
   public ContaMovimento() {
   }
@@ -34,7 +36,7 @@ public class ContaMovimento {
   }
 
   public void adicionarRecebimento(double valor) {
-    this.totalRecebimentos += valor;
+        this.totalRecebimentos += valor;
   }
 
   public void adicionarPagamento(double valor) {
@@ -49,35 +51,30 @@ public class ContaMovimento {
     this.totalDebitos += valor;
   }
 
-  @Override
-  public String toString() {
-    return "ContaMovimento{" +
-            "totalRecebimentos=" + totalRecebimentos +
-            ", totalPagamentos=" + totalPagamentos +
-            ", totalCreditos=" + totalCreditos +
-            ", totalDebitos=" + totalDebitos +
-            '}';
+//  @Override
+//  public String toString() {
+//    return  "TOTAL RECEBIMENTO" + totalRecebimentos;
+//  }
+
+//  public void imprimeSaldos() {
+//    System.out.println("Total de Recebimentos: " + this.totalRecebimentos);
+//    System.out.println("Total de Pagamentos: " + this.totalPagamentos);
+//    System.out.println("Total de Créditos: " + this.totalCreditos);
+//    System.out.println("Total de Débitos: " + this.totalDebitos);
+//    System.out.println("SHOW ");
+//  }
+//
+//  public void calcularSaldoLiquido() {
+//    double saldoLiquido = totalCreditos - totalDebitos;
+//    System.out.printf("Saldo líquido = R$" + saldoLiquido);
+//  }
+//
+//  public void calcularSaldoBruto(){
+//    double saldoBruto = totalRecebimentos - totalPagamentos;
+//    System.out.println("Saldo Bruto = R$" + saldoBruto);
+//  }
+//
+//  public void exibeCreditos(){
+//    double totalCreditos = getTotalCreditos();
   }
 
-  public void imprimeSaldos() {
-    System.out.println("Total de Recebimentos: " + this.totalRecebimentos);
-    System.out.println("Total de Pagamentos: " + this.totalPagamentos);
-    System.out.println("Total de Créditos: " + this.totalCreditos);
-    System.out.println("Total de Débitos: " + this.totalDebitos);
-    System.out.println("SHOW ");
-  }
-
-  public void calcularSaldoLiquido() {
-    double saldoLiquido = totalCreditos - totalDebitos;
-    System.out.printf("Saldo líquido = R$" + saldoLiquido);
-  }
-
-  public void calcularSaldoBruto(){
-    double saldoBruto = totalRecebimentos - totalPagamentos;
-    System.out.println("Saldo Bruto = R$" + saldoBruto);
-  }
-
-  public void exibeCreditos(){
-    double totalCreditos = getTotalCreditos();
-  }
-}

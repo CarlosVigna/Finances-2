@@ -242,11 +242,14 @@ public class Controlador {
         tituloReceber.cadastrar(ultimoCredor, ultimoTipoDeRecebimento);
         listaDeTitulosReceber.add(tituloReceber);
 
+
         System.out.println("*--------------------------------------*");
         System.out.println("Título Á RECEBER Cadastrado com sucesso!");
         System.out.println("*--------------------------------------*");
 
         System.out.println(tituloReceber);
+        contaMovimento.adicionarRecebimento(tituloReceber.getValor());
+
     }
 
     public void cadastrarFornecedor() {
@@ -450,6 +453,7 @@ public class Controlador {
 
         tituloPagar.cadastrar(ultimoFornecedor, ultimoTipoDePagamento);
         LisaDeTitulosPagar.add(tituloPagar);
+
         System.out.println("*-------------------------------------*");
         System.out.println("Novo Título à PAGAR cadastrado com sucesso! ");
         System.out.println("*-------------------------------------*");
@@ -513,6 +517,6 @@ public class Controlador {
 //    }
 
     public void exibirSaldo() {
-        contaMovimento.toString();
+        System.out.println(contaMovimento.getTotalRecebimentos());;
     }
 }

@@ -12,7 +12,7 @@ public class Relatorio {
         this.contaMovimento = contaMovimento;
     }
 
-    public void exibirSaldo() {
-        contaMovimento.calcularSaldoLiquido();
-    }
+//    public void exibirSaldo() {
+//        contaMovimento.calcularSaldoLiquido();
+//    }
 }
