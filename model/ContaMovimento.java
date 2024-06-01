@@ -21,10 +21,11 @@ public class ContaMovimento {
 
   /**
    * Construtor da classe ContaMovimento.
+   *
    * @param totalRecebimentos Total de recebimentos.
-   * @param totalPagamentos Total de pagamentos.
-   * @param totalDebitos Total de débitos.
-   * @param totalCreditos Total de créditos.
+   * @param totalPagamentos   Total de pagamentos.
+   * @param totalDebitos      Total de débitos.
+   * @param totalCreditos     Total de créditos.
    */
   public ContaMovimento(double totalRecebimentos, double totalPagamentos, double totalDebitos, double totalCreditos) {
     this.totalRecebimentos = totalRecebimentos;
@@ -35,6 +36,7 @@ public class ContaMovimento {
 
   /**
    * Esse método é usado para obter o total de recebimentos.
+   *
    * @return Total de recebimentos como uma string.
    */
   public String getTotalRecebimentos() {
@@ -43,6 +45,7 @@ public class ContaMovimento {
 
   /**
    * Esse método é usado para obter o total de pagamentos.
+   *
    * @return Total de pagamentos.
    */
   public double getTotalPagamentos() {
@@ -51,6 +54,7 @@ public class ContaMovimento {
 
   /**
    * Esse método é usado para obter o total de créditos.
+   *
    * @return Total de créditos.
    */
   public double getTotalCreditos() {
@@ -59,6 +63,7 @@ public class ContaMovimento {
 
   /**
    * Esse método é usado para obter o total de débitos.
+   *
    * @return Total de débitos.
    */
   public double getTotalDebitos() {
@@ -67,14 +72,16 @@ public class ContaMovimento {
 
   /**
    * Esse método é usado para adicionar um recebimento.
+   *
    * @param valor O valor do recebimento.
    */
   public void adicionarRecebimento(double valor) {
-        this.totalRecebimentos += valor;
+    this.totalRecebimentos += valor;
   }
 
   /**
    * Esse método é usado para adicionar um pagamento.
+   *
    * @param valor O valor do pagamento.
    */
   public void adicionarPagamento(double valor) {
@@ -83,6 +90,7 @@ public class ContaMovimento {
 
   /**
    * Esse método é usado para adicionar um crédito.
+   *
    * @param valor O valor do crédito.
    */
   public void adicionarCredito(double valor) {
@@ -91,13 +99,14 @@ public class ContaMovimento {
 
   /**
    * Esse método é usado para adicionar um débito.
+   *
    * @param valor O valor do débito.
    */
   public void adicionarDebito(double valor) {
     this.totalDebitos += valor;
   }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 //  @Override
 //  public String toString() {
 //    return  "TOTAL RECEBIMENTO" + totalRecebimentos;
@@ -123,11 +132,13 @@ public class ContaMovimento {
 //
 //  public void exibeCreditos(){
 //    double totalCreditos = getTotalCreditos();
-  }
 
-=======
+
+//=======
+
   /**
    * Esse método é usado para obter uma representação em string da movimentação da conta.
+   *
    * @return Uma representação em string da movimentação da conta.
    */
   @Override
@@ -162,7 +173,7 @@ public class ContaMovimento {
   /**
    * Esse método é usado para calcular e imprimir o saldo bruto.
    */
-  public void calcularSaldoBruto(){
+  public void calcularSaldoBruto() {
     double saldoBruto = totalRecebimentos - totalPagamentos;
     System.out.println("Saldo Bruto = R$" + saldoBruto);
   }
@@ -170,8 +181,8 @@ public class ContaMovimento {
   /**
    * Esse método é usado para exibir o total de créditos.
    */
-  public void exibeCreditos(){
+  public void exibeCreditos() {
     double totalCreditos = getTotalCreditos();
   }
 }
->>>>>>> 38da0cec54b8926f5d9b3b4e100a6e9091da9856
+

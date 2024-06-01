@@ -20,16 +20,15 @@ public class Relatorio {
         this.contaMovimento = contaMovimento;
     }
 
-<<<<<<< HEAD
-//    public void exibirSaldo() {
-//        contaMovimento.calcularSaldoLiquido();
-//    }
-=======
+////    public void exibirSaldo() {
+////        contaMovimento.calcularSaldoLiquido();
+////    }
+//=======
     /**
      * Esse método é usado para exibir o saldo da movimentação da conta.
      */
     public void exibirSaldo() {
         contaMovimento.calcularSaldoLiquido();
     }
->>>>>>> 38da0cec54b8926f5d9b3b4e100a6e9091da9856
+
 }
