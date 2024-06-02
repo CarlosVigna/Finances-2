@@ -67,11 +67,9 @@ public class Menu {
                     case 7:
                         controlador.lancarRecebimento();
                         break;
-
                     case 8:
-                        //controlador.lancarPagamento();
+                        controlador.lancarPagamento();
                         break;
-
                     case 9:
                         exibirMenuRelatorio();
                         break;

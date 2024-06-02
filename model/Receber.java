@@ -109,6 +109,7 @@ public class Receber {
         id = teclado.nextInt();
         System.out.println("Informe o Histórico: ");
         historico = teclado.nextLine();
+        teclado.nextLine();
         System.out.println("Informe o Valor: ");
         valor = teclado.nextDouble();
         teclado.nextLine();

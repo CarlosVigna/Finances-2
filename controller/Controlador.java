@@ -151,7 +151,7 @@ public class Controlador {
                 } while (!escolhaValida);
             }
         }
-        //essa é a opção dois lá do primeiro menu
+
         else if (escolhaReceber == 2) {
 
             credor = new Credor();
@@ -166,7 +166,7 @@ public class Controlador {
             System.out.println("Opção inválida.");
         }
 
-        int escolhaTipoTituloReceber; // variável para essa situação de escolher um tipo ja cadastrado ou cadastrar um novo.
+        int escolhaTipoTituloReceber;
 
         System.out.println("Próximo passo: ");
         System.out.println("1 - Adicionar um Tipo de Recebimento já cadastrado.");
@@ -179,7 +179,7 @@ public class Controlador {
 
         int escolhaCadastrarTipoRecebimento = 0;
 
-        // isEmpty é pra ver se tá vazio viu
+
         if (escolhaReceber == 1) {
 
             if (ListaDeTipoDeRecebimento.isEmpty()) {
@@ -224,7 +224,7 @@ public class Controlador {
                     System.out.print("Digite o número do Tipo de Recebimento: ");
                     int tipoRecebimentoEscolhido = teclado.nextInt();
                     teclado.nextLine();
-                    //Verificar se o ID selecionado está entre o zero e o maior da listagem
+
                     if (tipoRecebimentoEscolhido > 0 && tipoRecebimentoEscolhido <= ListaDeTipoDeRecebimento.size()) {
                         TipoDeRecebimento tipoRecebimentoSelecionado = ListaDeTipoDeRecebimento.get(tipoRecebimentoEscolhido - 1);
                         System.out.println("Tipo de Recebimento selecionado: " + tipoRecebimentoSelecionado);
@@ -295,7 +295,7 @@ public class Controlador {
      * Esse método é usado para registrar um novo título para pagamento.
      */
     public void cadastrarTituloPagar() {
-        int escolhaPagar; // variável para essa situação de escolher um cadastrado ou cadastrar um novo.
+        int escolhaPagar;
 
         Pagar tituloPagar = new Pagar();
 
@@ -310,10 +310,10 @@ public class Controlador {
         teclado.nextLine();
 
         int escolhaCadastrarFornecedor = 0;
-        // isEmpty é pra ver se tá vazio viu
+
         if (escolhaPagar == 1) {
 
-            if (ListaDeCredores.isEmpty()) {
+            if (ListaDeFornecedores.isEmpty()) {
                 System.out.println("Não há Fornecedores cadastrados!! ;( ");
                 System.out.println("Deseja cadastrar um novo Fornecedor? \n1-Sim, 2-Não");
                 System.out.println();
@@ -331,7 +331,7 @@ public class Controlador {
                     System.out.println("*-------------------------------------*");
 
                 } else {
-                    //continue volta ao menu principal
+
                     if (escolhaCadastrarFornecedor == 2) {
                         return;
                     }
@@ -423,7 +423,7 @@ public class Controlador {
 
                 } else {
                     if (escolhaCadastrarTipoPagamento == 2) {
-                        tipoDePagamento.cadastrar();
+                        tipoRecebimento.cadastrar();
                     }
                 }
 
@@ -534,20 +534,58 @@ public class Controlador {
         contaMovimento.adicionarCredito(credito.getValor());
     }
 
+    public void lancarPagamento() {
 
+        System.out.println("Por favor, escolha o título a pagar para o qual deseja registrar um pagamento: ");
 
-//    public void gerarRelatorioDespesasPorPeriodo() {
-//        relatorio.gerarRelatorioDespesasPorPeriodo();
-//    }
-//
-//    public void gerarRelatorioRecebimentosPorPeriodo() {
-//        relatorio.gerarRelatorioRecebimentosPorPeriodo();
-//    }
+        Collections.sort(LisaDeTitulosPagar, comparing(Pagar::getId));
 
+        System.out.println("Títulos À PAGAR: ");
+        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓");
+
+        int i = 1;
+        for (Pagar x : LisaDeTitulosPagar) {
+            System.out.println(i + " - " + x);
+            i++;
+        }
+        //boolean que determina se o do while continua ou nem
+        boolean escolhaValida = false;
+
+        //"do" valida a escolha do usuário, caso ele escolha algum número que não esteja na lista, o sistema pede novamente
+        do {
+            int pagamentoEscolhido = 0;
+            System.out.print("Digite o número do Título desejado: ");
+            pagamentoEscolhido = teclado.nextInt();
+            teclado.nextLine();
+
+            //Aqui ele verifica se o número informado é maior que zero e menor que o último da lista
+            if (pagamentoEscolhido > 0 && pagamentoEscolhido <= LisaDeTitulosPagar.size()) {
+                Pagar pagamentoSelecionado = LisaDeTitulosPagar.get(pagamentoEscolhido - 1);
+                System.out.println("Título selecionado: " + pagamentoSelecionado);
+                //Armazeno o credor selecionado em uma variável que será vinculada ao crédito
+                ultimoPagamento = LisaDeTitulosPagar.getLast();
+                //Validação dessa ação, caso não seja validado ele informa o else e refaz o do while
+                escolhaValida = true;
+
+            } else {
+                System.out.println("Opção inválida. ☹\uFE0F ");
+            }
+
+        } while (!escolhaValida);
+
+        Debito debito = new Debito();
+        debito.cadastrar(ultimoPagamento);
+        ListaDeLancamentosDebitos.add(debito);
+        System.out.println(debito);
+        contaMovimento.adicionarDebito(debito.getValor());
+    }
 
     public void exibirTotalRecebimento(){
+        System.out.println("");
         System.out.println(listaDeTitulosReceber);
+        System.out.println("");
         System.out.printf("Total dos títulos a RECEBER R$" + contaMovimento.getTotalRecebimentos());
+        System.out.println("---------------------------------------------");
     }
 
     public void exibirTotalPagamento(){
@@ -566,7 +604,5 @@ public class Controlador {
     /**
      * Esse método é usado para exibir o saldo da movimentação da conta.
      */
-//    public void exibirSaldo() {
-//        System.out.println(contaMovimento.getTotalRecebimentos());;
-//    }
+
 }
